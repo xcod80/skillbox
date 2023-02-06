@@ -2,7 +2,7 @@
 
 while True:
     start_year, end_year = input("Введите первый год:"), input("Введите второй год:")
-    if start_year.isdigit() and end_year.isdigit() and len(start_year) == 4 and len(end_year):
+    if start_year.isdigit() and end_year.isdigit() and len(start_year) == 4 and len(end_year) == 4:
         if int(start_year) > int(end_year):
             start_year, end_year = end_year, start_year
         break
