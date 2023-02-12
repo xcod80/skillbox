@@ -1,0 +1,25 @@
+stages:
+  - test
+
+.node-job:
+  image: registry.skillbox.ru/python:3.8.12
+  tags:
+    - students
+  cache:
+    key: python_cache
+    paths:
+      - .python_cache/
+
+test:
+  extends: .node-job
+  stage: test
+  script:
+    - pip install unittest-xml-reporting
+    - python -m xmlrunner -o test-results
+  artifacts:
+    when: always
+    reports:
+      junit: test-results/TEST-*.xml
+  only:
+    refs:
+      - merge_requests
